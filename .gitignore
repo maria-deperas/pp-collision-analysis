@@ -1,0 +1,6 @@
+events.root
+*_test.root
+generate
+analyze
+*.o
+.vscode/
