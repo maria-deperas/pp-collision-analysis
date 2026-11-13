@@ -16,7 +16,8 @@
 #include "TLegend.h"
 
 void draw_plots(const char* inName = "analysis.root") {
-    gSystem->mkdir("plots", true);
+gSystem->mkdir("plots/png", true);   // true = also create plots/ if needed
+    gSystem->mkdir("plots/pdf", true);
 
     TFile file(inName, "READ");
     if (file.IsZombie()) {
@@ -87,8 +88,8 @@ void draw_plots(const char* inName = "analysis.root") {
             h->SetLineColor(colors[k]);
             h->Draw("HIST");
 
-            c.SaveAs(("plots/" + name + ".png").c_str());
-            c.SaveAs(("plots/" + name + ".pdf").c_str());
+            c.SaveAs(("plots/png/" + name + ".png").c_str());
+            c.SaveAs(("plots/pdf/" + name + ".pdf").c_str());
         }
     }
 
@@ -139,8 +140,8 @@ void draw_plots(const char* inName = "analysis.root") {
         for (size_t i = 1; i < hists.size(); i++) hists[i]->Draw("HIST SAME");
         leg.Draw();
  
-        c.SaveAs(("plots/compare_" + var + ".png").c_str());
-        c.SaveAs(("plots/compare_" + var + ".pdf").c_str());
+        c.SaveAs(("plots/png/compare_" + var + ".png").c_str());
+        c.SaveAs(("plots/pdf/compare_" + var + ".pdf").c_str());
     }
 
     std::cout << "Done: plots saved in plots/" << std::endl;
