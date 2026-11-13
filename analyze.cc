@@ -140,5 +140,7 @@ int main(int argc, char* argv[]) {
     outFile.Write();
     outFile.Close();
 
+    std::cout << "Saved histograms to " << outName << std::endl;
+
     return 0;
 }

@@ -42,7 +42,11 @@ int main(int argc, char* argv[]) {
             else if ((arg == "-s" || arg == "--seed") && i + 1 < argc) seed = std::stoi(argv[++i]);
             else if ((arg == "-e" || arg == "--ecm") && i + 1 < argc) eCM = std::stod(argv[++i]);
             else if ((arg == "-o" || arg == "--output") && i + 1 < argc) outName = argv[++i];
-            else { std::cerr << "Unknown option: " << arg << std::endl; printUsage(); return 1; }
+            else { 
+                std::cerr << "Unknown option: " << arg << std::endl; 
+                printUsage(); 
+                return 1; 
+            }
         }
     } catch (const std::exception&) {
         std::cerr << "Invalid value for option" << std::endl;
@@ -92,7 +96,10 @@ int main(int argc, char* argv[]) {
     int nFailed = 0;
 
     for (int i = 0; i < nEvents; ++i) {
-        if (!pythia.next()) { nFailed++; continue; }
+        if (!pythia.next()) { 
+            nFailed++; 
+            continue; 
+        }
 
         id.clear();
         charge.clear();
